@@ -26,7 +26,7 @@ type Opt struct {
 }
 
 func (this Opt) FormSortQuery() []string {
-	if this.DoSort {
+	if this.DoSort || this.Sort != "" {
 		if this.Sort == "" {
 			return []string{"_id"}
 		} else {

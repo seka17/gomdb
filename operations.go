@@ -9,6 +9,8 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+type M bson.M
+
 var (
 	NoQuery    error = errors.New("No query specified")
 	NotChanged error = errors.New("Nothing fits query")
