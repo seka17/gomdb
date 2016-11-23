@@ -27,6 +27,7 @@ func InitDB(address string, logger *logrus.Logger) (*DB, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	if di.Database == "" {
 		di.Database = "test"
 	}
@@ -50,6 +51,13 @@ func InitDB(address string, logger *logrus.Logger) (*DB, error) {
 	}
 
 	return db, nil
+}
+
+func (this *DB) Database() *mgo.Database {
+	return &mgo.Database{
+		Session: this.session,
+		Name:    this.database,
+	}
 }
 
 func (this *DB) AddCollection(name string, indexes []mgo.Index) error {
